@@ -644,6 +644,7 @@ body {overflow-x: hidden;}
   margin: 0 10px;
   color: #ffffff;
   text-shadow: rgba(0, 0, 0, 60%);
+  cursor: pointer;
 }
 
 .vs_pagenation_indi_pc_tab ul li.picker {
@@ -654,8 +655,8 @@ body {overflow-x: hidden;}
 .vs_pagenation_indi_pc_tab ul .vs_page_btn {
   width: 30px; height: 35px;
   overflow: hidden;
-  /* border: 1px solid black; box-sizing: border-box; */
   cursor: pointer;
+  transition: all 0.3s;
   }
 
   .vs_pagenation_indi_pc_tab ul .page_indi_left {
@@ -1946,18 +1947,18 @@ background: url('images/controls.png') no-repeat -43px -32px; */
 
 
 .thumb_layout_container {
-  position: absolute;
-  bottom: 0;
-  right: 5%;
   width: 50%;
+  position: absolute;
+  bottom: 1%;
+  right: 5%;
   padding-top: 10%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 
 .thumb_layout_container .gallery-thumbs {
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: absolute;
   top: 0;
   left: 0;
@@ -1975,6 +1976,7 @@ background: url('images/controls.png') no-repeat -43px -32px; */
   position: absolute;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 
 
@@ -1998,6 +2000,7 @@ background: url('images/controls.png') no-repeat -43px -32px; */
   background-color: transparent;
   border: none;
   display: none;
+  cursor: pointer;
 }
 
 .slider_auto_controller>button.on_btn {
@@ -2014,6 +2017,7 @@ background: url('images/controls.png') no-repeat -43px -32px; */
   position: absolute;
   bottom: 21%;
   z-index: 9;
+  cursor: pointer;
 }
 
 .swiper_controller img {
@@ -2054,6 +2058,7 @@ background: url('images/controls.png') no-repeat -43px -32px; */
 .art_show_swiper .swiper-wrapper .swiper-slide .art_show_info {
   text-align: center;
   display: none;
+  cursor: pointer;
 }
 
 .art_show_swiper .swiper-wrapper .swiper-slide .art_show_img img {
@@ -2062,11 +2067,14 @@ background: url('images/controls.png') no-repeat -43px -32px; */
   position: absolute;
   top: 0;
   left: 0;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px #c1c1c1;
 }
 
 .art_show_swiper .swiper-wrapper .swiper-slide-active{
   opacity: 1;
   transform: scale(1.1);
+  box-shadow: 0 10px 6px -6px #c1c1c1;
 }
 
 
@@ -2102,6 +2110,7 @@ background: url('images/controls.png') no-repeat -43px -32px; */
   bottom: 0;
   right: 5%;
   display: none;
+  cursor: pointer;
 }
 
 .art_show_autoplay_control>button img {
@@ -2118,6 +2127,7 @@ background: url('images/controls.png') no-repeat -43px -32px; */
   position: absolute;
   top: 40%;
   z-index: 9;
+  cursor: pointer;
 }
 
 .art_show_controller .art_show_prev {

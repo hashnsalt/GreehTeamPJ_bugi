@@ -237,7 +237,9 @@ $(function(){
       //   $('.test_index').text(showVisual.index());
       // }
       if(showVisual.hasClass('live') == true) {
+        let i = showVisual.index();        
         $('.counter_indi').text(showVisual.index()+1 + '/3');
+        vsPagePc.eq(i).addClass('picker').siblings().removeClass('picker');
       }
       state = false;
 
@@ -257,12 +259,29 @@ $(function(){
       left: 0
     }, 300, function(){
       if(showVisual.hasClass('live') == true) {
+        let i = showVisual.index();   
         $('.counter_indi').text(showVisual.index()+1 + '/3');
+        vsPagePc.eq(i).addClass('picker').siblings().removeClass('picker');
       }
-      // 3번그림이 2번으로 잡히고 2번 그림이 3번으로 잡힘순서가 이상함.... (********************E)
+
       state = false;
     });
   } //right() button_click event
+
+
+    vsPagePc.click(function(){
+    let i = $(this).index();
+    $(this).addClass('picker').siblings().removeClass('picker');
+
+    $('.visual_main .vs_frame .vs_sizing_box').stop().animate({
+      left: eleWidth * -i
+    }, 300, function(){
+      $(this).children('div:first').insertAfter($(this).children('div:last')).removeClass('live');
+      $(this).css('left',0).children('div:first').addClass('live');
+      state = false;
+    });
+  }); //num_pagenation_btn_click_event
+
 
   /////////////////////////////mobile_btn////////////////////////////
 
@@ -278,26 +297,6 @@ $(function(){
       state = true;
       right();
     }
-  });
-
-  // var swiper = new Swiper(".mySwiper", {
-  //   pagination: {
-  //     el: ".swiper-pagination",
-  //     type: "fraction"
-  //   },
-  //   navigation: {
-  //     nextEl: ".right",
-  //     prevEl: ".left"
-  //   },
-  
-  // });
-
-  vsPagePc.click(function(){
-    // let i = vsPagePc.index();
-    // if(showVisual.index() == vsPagePc.index()){
-      $(this).addClass('picker').siblings().removeClass('picker');
-    // }
-
   });
 
 
@@ -531,7 +530,7 @@ $(function(){
     });
 
     let galleryThumbs = new Swiper('.gallery-thumbs', {
-      // slidesPerView: 6,
+      slidesPerView: 6,
       autoHeight:true,
     	spaceBetween: 20,
     	navigation: {
@@ -732,15 +731,16 @@ window.addEventListener('scroll', () => {
     });
   });
 
+  const bannerItem = document.querySelectorAll('.banner_contents div img');
 
-  // const contTabView = document.querySelector('.contents03_view_box .tab_view>img');
-
-  // const cont03TabItems = document.querySelectorAll('.contents03_tab_box>ul>li a');
-
-  // for(let i in cont03TabItems) {
-  //   cont03TabItems[i].addEventListener('click',function(){
-  //   });
-  // }
+  bannerItem.forEach((bannerEl) => {
+    bannerEl.addEventListener('mouseover', function(){
+      this.style.cssText = 'transform: translateY(-5%); transition: all 0.3s; box-shadow: 5px 5px 25px 7px #e1e1e1;'
+    })
+    bannerEl.addEventListener('mouseout', function(){
+      this.style.cssText = '';
+    })
+  })
 
 
 });
