@@ -259,6 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let replyList = [];
   let addReply = document.querySelector('.reply_button');
+  let replyName = [];
+  let replyTime = []; //전역변수로 설정한 타임 값.
+  
 
 
 
@@ -267,10 +270,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function addReList() {
 
     let replyInput = document.querySelector('.comment_txt_area');
+
     if(replyInput.value != null) {
       replyList.unshift(replyInput.value);
       replyInput.value = '';
       replyInput.focus();
+      // replyTime.unshift(sec);
+      // replyNum.unshift(ranNum);
     }
     showReply();
   }
@@ -279,6 +285,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function showReply() {
     let listRe = '<ul>';
 
+    let count = 0;
+
+    let replyCount = document.querySelector('.reply_list_count');
+
+    // let idNum = 0;
+
+    let userNum = Math.random() * 1000;
+    let userName = `user_00${parseInt(userNum)}`;
+
+    // const replyProfileImg = document.createElement('img');
+    // const replyProfile = document.querySelector('.reply_profile');
+    let ranNum = parseInt(Math.random() * 1);
+
+    
     let today = new Date();
     let year = today.getFullYear();
     let month = today.getMonth() + 1;
@@ -286,28 +306,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let hour = today.getHours();
     let minute = today.getMinutes();
     let sec = today.getSeconds();
-
     let replyDate = `${year}-${month}-${date} ${hour}:${minute}:${sec}`;
 
-    let count = 0;
-
-    let replyCount = document.querySelector('.reply_list_count');
+    replyTime.unshift(replyDate); //데이터를 집어 넣음.
+    replyName.unshift(userName);
+  
 
     for (let i = 0; i<replyList.length; i++) {
-      count++;
-      let userNum = Math.random() * 1000;
-      let userName = 'user_00' + parseInt(userNum);
-      // const replyProfileImg = document.createElement('img');
-      // const replyProfile = document.querySelector('.reply_profile');
-      let ranNum = parseInt(Math.random() * 1);
 
-      listRe += '<li>'+ '<div class="reply_title">' + '<div class="reply_profile"><img src="./images/reply_profile_0'+ranNum+'.png"/ ></div>' + '<div class="reply_user_info">' + '<p class="reply_user_name">'+ userName +'</p>'+ '<p class="reply_date">'+ replyDate +'</p>'+ '<p class="reply_txt">'+ replyList[i] +'</p>'+ '</div>' + '<span class="re_delete" id="'+ i +'">삭제</span>' + '</div>'+'</li>';
+      count++;
+
+      // idNum += ranNum;
+  
+
+      listRe += '<li>'+ '<div class="reply_title">' + '<div class="reply_profile"><img src="./images/reply_profile_0'+ranNum+'.png"/ ></div>' + '<div class="reply_user_info">' + '<p class="reply_user_name">'+ replyName[i] +'</p>'+ '<p class="reply_date">'+ replyTime[i] +'</p>'+ '<p class="reply_txt">'+ replyList[i] +'</p>'+ '</div>' + '<span class="re_delete" id="'+ i +'">삭제</span>' + '</div>'+'</li>';
     }
     listRe += '</ul>';
     
     replyCount.textContent = count;
 
     document.querySelector('.reply_list').innerHTML = listRe;
+    // document.querySelector('.reply_date').innerHTML = idNum;
 
     let deleteRe = document.querySelectorAll('.re_delete');
 
